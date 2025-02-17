@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\feedback_models;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -11,7 +12,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(feedback_models::all());
     }
 
     /**
