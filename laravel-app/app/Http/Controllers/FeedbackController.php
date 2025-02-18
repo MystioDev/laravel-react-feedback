@@ -88,6 +88,13 @@ class FeedbackController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $feedback = feedback_models::find($id);
+
+        if (!$feedback) {
+            return response()->json(['message' => 'Nem található visszajelzés'], 404);
+        }
+        $feedback->delete();
+
+        return response()->json(['messsage' => 'Sikeres törlés!']);
     }
 }

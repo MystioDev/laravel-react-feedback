@@ -87,7 +87,11 @@ function App() {
             <h1 className="text-2xl font-bold">Eddigi visszajelzések:</h1>
             <section className="flex flex-col justify-center items-center">
               {feedbacks.map((feedback, index) => (
-                <Feedback key={index} feedback={feedback}></Feedback>
+                <Feedback
+                  key={index}
+                  feedback={feedback}
+                  updater={setShouldRefetch}
+                ></Feedback>
               ))}
             </section>
           </article>

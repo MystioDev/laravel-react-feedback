@@ -1,4 +1,21 @@
 const Feedback = (props) => {
+  const handleDelete = () => {
+    fetch("http://127.0.0.1:8000/api/feedbacks/" + props.feedback.id, {
+      method: "delete",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+
+        props.updater(true);
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <>
       {props.feedback ? (
@@ -17,6 +34,7 @@ const Feedback = (props) => {
           </div>
 
           <button
+            onClick={handleDelete}
             className="transition-all bg-red-500 hover:bg-red-400 p-2 rounded-xl text-white text-lg font-bold font-mono cursor-pointer"
             type="button"
           >
